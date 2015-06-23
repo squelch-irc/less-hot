@@ -4,7 +4,10 @@
   "description": "A hot loader for LESS, primarily intended for use with Electron.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jscs": "jscs index.js --fix",
+    "jshint": "jshint index.js",
+    "lint": "npm run jshint && npm run jscs"
   },
   "repository": {
     "type": "git",
@@ -25,5 +28,9 @@
   "homepage": "https://github.com/squelch-irc/less-hot#readme",
   "dependencies": {
     "less-cache": "^0.22.0"
+  },
+  "devDependencies": {
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "preset": "google",
+  "disallowEmptyBlocks": true,
+  "disallowFunctionDeclarations": true,
+  "disallowTrailingComma": true,
+  "requireSemicolons": true,
+  "requireSpaceBetweenArguments": true,
+  "requireSpacesInForStatement": true,
+  "requireParenthesesAroundIIFE": true,
+  "validateQuoteMarks": "'",
+  "validateIndentation": 4,
+  "esnext": true
+}
