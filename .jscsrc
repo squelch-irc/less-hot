@@ -9,5 +9,6 @@
   "requireParenthesesAroundIIFE": true,
   "validateQuoteMarks": "'",
   "validateIndentation": 4,
+  "maximumLineLength": null,
   "esnext": true
 }

@@ -1,26 +1,27 @@
 var LessCache = require('less-cache');
 var os = require('os');
-// var fs = require('fs');
+var chokidar = require('chokidar');
 
 module.exports = function(opts) {
+    if (!document || !process) {
+        throw new Error('less-hot can only be used in Electron\'s BrowserWindow context');
+    }
+
     opts = opts || {};
     var cacheDir = opts.cacheDir || os.tmpdir();
     var cache = new LessCache({cacheDir: cacheDir});
 
     var load = function(path) {
-        return cache.readFileSync(path);
-    };
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = cache.readFileSync(path);
 
-    load.style = function(/*path*/) {
-        // var css = load(path);
-        // TODO: make sure document exists, create style tag
-        throw new Error('Not yet implemented');
-    };
+        chokidar.watch(path, {persistent: false})
+            .on('change', function(path) {
+                style.innerHTML = cache.readFileSync(path);
+            });
 
-    load.style.hot = function(/*path*/) {
-        // var style = style(path);
-        // TODO: add watcher on less file and swap in new compiled less
-        throw new Error('Not yet implemented');
+        return style;
     };
 
     return load;

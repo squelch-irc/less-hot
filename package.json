@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/squelch-irc/less-hot#readme",
   "dependencies": {
+    "chokidar": "^1.0.3",
     "less-cache": "^0.22.0"
   },
   "devDependencies": {
